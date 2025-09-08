@@ -1,0 +1,31 @@
+Authenticate-GCP
+————————
+gcloud auth application-default login
+
+gcloud auth list
+
+gcloud config get-value project
+
+ python3 /Users/manoranjans.vc/Desktop/fStream/scripts/pubsub/set_labels_topic_subscription.py --project_id fks-fstream-compute
+
+
+￼
+To run this file first we need to trigger some gogole cloud command in terminal
+
+gcloud config get-value project
+(this command is use to retrieve the current project ID)
+
+make sure the project id is retrieved is your expected project id
+
+
+if not then you can trigger the command to set project id
+
+gcloud config set project PROJECT_ID
+
+
+then before running the script
+to authenticate your local environment, use this command
+
+gcloud auth application-default login
+
+/Users/manoranjans.vc/valid-bedrock-453012-u5-80f7a0900c5d.json
