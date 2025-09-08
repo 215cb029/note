@@ -1,0 +1,157 @@
+Remote terminal
+
+scp /Users/manoranjans.vc/Desktop/Project/scripts/Bigtable/bigtable_cleanup.py manoranjans.vc@10.116.13.137:~
+      scp /Users/manoranjans.vc/Desktop/Project/scripts/Bigtable/bigtable_cleanup.py  manoranjans.vc@10.116.7.137:~
+scp -r /Users/manoranjans.vc/demo  manoranjans.vc@10.119.0.73:~
+scp packaging-25.0-py3-none-any.whl manoranjans.vc@10.119.0.42:~/kafka_packages
+
+
+ 
+
+scp -i ~/.ssh/id_rsa -o ProxyJump=manoranjans.vc@global.jumphost-prod.fkcloud.in "manoranjans.vc@10.116.13.137:/home/manoranjans.vc/“*.log “/Users/manoranjans.vc/backup/“
+scp -i ~/.ssh/id_rsa -o ProxyJump=manoranjans.vc@global.jumphost-prod.fkcloud.in “manoranjans.vc@10.119.0.73:/home/manoranjans.vc/extracted-jar/META-INF/maven/com.kafka/kafka/“pom.xml”/Users/manoranjans.vc/backup/“
+
+python3  /Users/manoranjans.vc/Desktop/Project/scripts/Bigtable/bigtable_cleanup.py   --project_id fkp-fsg-bigtable   --instance_id fk-fsg-p-bt-ass1-fni-22ak   --table_id mh_shipment_service_shipment   --max_bt_size 10000   --max_read_size 1000   --batch_size 500   --sleep_second 120   --last_row_key  fffffffe408b49c8c8fcf4822c661b136abf95bb8733e1268dab014f65c3f75c
+> cleanup_2305_2130.log 2>
+
+
+nohup spark-submit \
+  --conf "spark.driver.memory=4g" \
+  --conf "spark.executor.memory=4g" \
+  /home/manoranjans.vc/bigtable_cleanup.py \
+  --project_id fkp-fsg-bigtable \
+  --instance_id fk-fsg-p-bt-ass1-fni-22ak \
+  --table_id mh_shipment_service_shipment \
+  --max_bt_size 1000 \
+  --max_read_size 100 \
+  --batch_size 50 \
+  --sleep_second 10 \
+  > cleanup_0207_2140.log 2>&1 &
+
+pkill -f 'spark-submit'
+pkill -f 'org.apache.spark.deploy.SparkSubmit'
+
+
+
+0803a545628e2e2ef91c1fa73ad642f8b2f129f14ed34874b162ca23358d70c8
+
+
+ 
+
+
+tail -f  cleanup_2404_1630.log
+grep -i 'deleted' cleanup_2404_1630.lo
+
+
+cleanup_2304_1750.log
+cleanup_2304_1830.log
+cleanup_2304_2147.log
+cleanup_2404_1630.log
+cleanup_2404_1935.log
+cleanup_2504_1545.log
+ cleanup_2504_2315.log 
+_____________
+lastRowKey
+__________
+
+SHA256:KKjTZvs5I41ZSmBHvgrlYVkKjlH0WYQeDsbLZp81GR4 manoranjans.vc@FK1089-233831L.local
+
+
+
+
+ python3 /Users/manoranjans.vc/Desktop/fStream/scripts/Bigtable/bigtable_cleanup.py\
+  --project_id fkp-fsg-bigtable \
+  --instance_id bigtable-1 \
+  --table_id shipment \
+  --max_bt_size 66 \
+  --max_read_size 20\
+ --bt_sleep_second 5\
+  --batch_read_size 10 \
+  --batch_sleep_second 2 
+
+
+_______________________
+When ram size will low
+ps aux | grep spark
+
+To check script running?
+ps aux | grep spark
+
+ps aux | grep bigtable_cleanup.py
+___________________
+
+
+_____________________
+To check spark is  configure
+
+mkdir -p ~/spark-logs
+export SPARK_LOG_DIR=~/spark-logs
+export SPARK_CONF_DIR=~log4j2.xml
+echo 'export SPARK_LOG_DIR=~/spark-logs' >> ~/.bashrc
+source ~/.bashrc
+
+You can explicitly tell Spark to use your log4j2.xml file:
+bash
+CopyEdit
+export SPARK_CONF_DIR=~
+
+
+python3 -c "from pyspark import SparkConf, SparkContext; conf = SparkConf().setMaster('local[*]').setAppName('TestApp').set('spark.submit.deployMode', 'client'); sc = SparkContext(conf=conf); print(sc.parallelize([1,2,3]).count())"
+_____________________________________________________________
+
+
+python3 /Users/manoranjans.vc/Desktop/Project/scripts/Bigtable/bigtable_cleanup.py \
+  --project_id fkp-fsg-bigtable \
+  --instance_id fk-fsg-p-bt-ass1-fni-22ak \
+  --table_id mh_shipment_service_shipment \
+  --max_bt_size 100 \
+  --max_read_size 20 \
+  --batch_size 10 \
+  --sleep_second 2 
+
+
+gcloud bigtable instances tables describe mh_shipment_service_shipment  --instance=fk-fsg-p-bt-ass1-fni-22ak --view stats --project fkp-fsg-bigtable
+
+rowCount: '787,65,63,844'
+
+cleanup_0905=60cr
+cleanup_1005=20cr
+cleanup_1105=80cr
+cleanup_1205=80cr
+cleanup_1305=40cr
+cleanup_1405=90cr
+cleanup_1505=70cr
+cleanup_1605=62cr
+cleanup_1705=70cr
+cleanup_1805=70cr
+cleanup_1905=70cr
+
+
+
+		GCPSRE-8550
+
+
+
+
+ssh 10.116.7.137
+
+
+#!/bin/bash
+
+# Set environment variables (if needed)
+export SPARK_HOME=/path/to/your/spark  # Optional if not set in environment
+export PATH=$SPARK_HOME/bin:$PATH
+
+# Run Spark job with nohup
+nohup spark-submit \
+  --conf "spark.driver.memory=4g" \
+  --conf "spark.executor.memory=4g" \
+  /home/manoranjans.vc/bigtable_cleanup.py \
+  --project_id fkp-fsg-bigtable \
+  --instance_id fk-fsg-p-bt-ass1-fni-22ak \
+  --table_id mh_shipment_service_shipment \
+  --max_bt_size 10000000 \
+  --max_read_size 100000 \
+  --batch_size 5000 \
+  --sleep_second 10 \
+  > /home/manoranjans.vc/cleanup_$(date +\%Y\%m\%d_\%H\%M).log 2>&1 &
